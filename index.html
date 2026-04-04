@@ -3,722 +3,668 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Claude-MangoPress – Modern Acre Studio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<title>Claude-MangoPress</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0e0e0f;
-  --surface:#18181b;
-  --surface2:#222226;
-  --border:#2e2e34;
-  --accent:#f5c842;
-  --accent2:#e6a800;
-  --text:#f0efe8;
-  --muted:#8a8a94;
-  --danger:#e24b4a;
-  --success:#1D9E75;
-  --radius:12px;
-  --radius-sm:8px;
-  --font-body:'DM Sans',sans-serif;
-  --font-display:'DM Serif Display',serif;
+  --bg:#0e0e0f;--surface:#18181b;--surface2:#222226;--border:#2e2e34;
+  --accent:#f5c842;--accent2:#e6a800;--text:#f0efe8;--muted:#8a8a94;
+  --danger:#e24b4a;--success:#1D9E75;--radius:12px;--radius-sm:8px;
 }
-body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.6;min-height:100vh}
-a{color:var(--accent);text-decoration:none}
-
-/* HEADER */
-header{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;background:rgba(14,14,15,0.92);backdrop-filter:blur(12px)}
-.logo{display:flex;align-items:center;gap:10px;cursor:pointer;font-family:var(--font-display);font-size:22px;color:var(--text)}
-.logo span{font-size:26px}
-.header-actions{display:flex;align-items:center;gap:12px}
-.btn{padding:8px 18px;border-radius:var(--radius-sm);border:1px solid var(--border);background:transparent;color:var(--text);font-family:var(--font-body);font-size:13px;font-weight:500;cursor:pointer;transition:all 0.15s}
-.btn:hover{background:var(--surface2);border-color:var(--muted)}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;line-height:1.6;min-height:100vh}
+a{color:var(--accent)}
+header{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;background:rgba(14,14,15,0.95)}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:20px;font-weight:700;color:var(--text)}
+.header-actions{display:flex;align-items:center;gap:10px}
+.btn{padding:8px 18px;border-radius:var(--radius-sm);border:1px solid var(--border);background:transparent;color:var(--text);font-size:13px;font-weight:500;cursor:pointer;transition:all 0.15s;font-family:inherit}
+.btn:hover{background:var(--surface2)}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
 .btn-primary{background:var(--accent);color:#0e0e0f;border-color:var(--accent);font-weight:600}
 .btn-primary:hover{background:var(--accent2);border-color:var(--accent2)}
-.btn-sm{padding:6px 14px;font-size:12px}
+.btn-sm{padding:6px 12px;font-size:12px}
+.btn-danger{color:var(--danger);border-color:transparent}
 .badge{background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:20px;font-size:11px;color:var(--muted)}
-
-/* LAYOUT */
-main{max-width:900px;margin:0 auto;padding:40px 24px 80px}
-
-/* HERO */
-.hero{text-align:center;margin-bottom:48px}
-.hero h1{font-family:var(--font-display);font-size:clamp(32px,5vw,52px);line-height:1.15;margin-bottom:12px;color:var(--text)}
-.hero h1 em{color:var(--accent);font-style:italic}
-.hero p{color:var(--muted);font-size:15px;max-width:480px;margin:0 auto}
-
-/* FORM CARD */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px}
-.card+.card{margin-top:20px}
-
-.section-label{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-.field{margin-bottom:20px}
+main{max-width:860px;margin:0 auto;padding:40px 20px 80px}
+.hero{text-align:center;margin-bottom:40px}
+.hero h1{font-size:clamp(28px,5vw,46px);line-height:1.2;margin-bottom:10px;font-weight:700}
+.hero-accent{color:var(--accent);font-style:italic}
+.hero p{color:var(--muted);font-size:15px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px}
+.section-label{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.field{margin-bottom:18px}
 .field label{display:block;font-size:13px;font-weight:500;color:var(--muted);margin-bottom:6px}
-.field input,.field textarea,.field select{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:var(--font-body);font-size:14px;padding:10px 14px;outline:none;transition:border-color 0.15s}
-.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent)}
-.field textarea{resize:vertical;min-height:90px;line-height:1.5}
-.field select option{background:var(--surface2)}
-
+.field input,.field textarea{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:inherit;font-size:14px;padding:10px 14px;outline:none;transition:border-color 0.15s}
+.field input:focus,.field textarea:focus{border-color:var(--accent)}
+.field textarea{resize:vertical;min-height:85px;line-height:1.5}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-@media(max-width:600px){.grid-2,.grid-3{grid-template-columns:1fr}}
-
-/* PILL SELECTOR */
+@media(max-width:580px){.grid-2{grid-template-columns:1fr}}
 .pill-group{display:flex;flex-wrap:wrap;gap:8px}
-.pill{padding:7px 16px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:var(--font-body);font-size:13px;cursor:pointer;transition:all 0.15s}
+.pill{padding:7px 16px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:inherit;font-size:13px;cursor:pointer;transition:all 0.15s}
 .pill:hover{border-color:var(--muted);color:var(--text)}
 .pill.active{background:var(--accent);border-color:var(--accent);color:#0e0e0f;font-weight:600}
-
-/* WORD COUNT */
 .wc-group{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.wc-btn{padding:10px;border-radius:var(--radius-sm);border:1px solid var(--border);background:transparent;color:var(--muted);font-family:var(--font-body);font-size:13px;font-weight:500;cursor:pointer;text-align:center;transition:all 0.15s}
+.wc-btn{padding:10px;border-radius:var(--radius-sm);border:1px solid var(--border);background:transparent;color:var(--muted);font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;text-align:center;transition:all 0.15s}
 .wc-btn:hover{border-color:var(--muted);color:var(--text)}
-.wc-btn.active{background:var(--surface2);border-color:var(--accent);color:var(--accent)}
-
-/* TEMPLATES */
-.template-row{display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)}
-.template-row:last-child{border-bottom:none}
-.template-name{flex:1;font-size:13px;color:var(--text)}
-.template-meta{font-size:11px;color:var(--muted)}
-
-/* GENERATE BTN */
-.generate-wrap{margin-top:28px;display:flex;gap:12px;align-items:center}
-.generate-btn{flex:1;padding:14px;background:var(--accent);color:#0e0e0f;border:none;border-radius:var(--radius-sm);font-family:var(--font-display);font-size:18px;font-weight:400;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center;gap:10px}
-.generate-btn:hover{background:var(--accent2);transform:translateY(-1px)}
-.generate-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
-
-/* LOADING */
-.loading-overlay{position:fixed;inset:0;background:rgba(14,14,15,0.9);backdrop-filter:blur(8px);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px}
-.spinner{width:48px;height:48px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.loading-title{font-family:var(--font-display);font-size:26px;color:var(--text)}
-.loading-status{font-size:14px;color:var(--muted);animation:pulse 1.5s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-
-/* ARTICLE RESULT */
-.result-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap}
-.result-title{font-family:var(--font-display);font-size:clamp(22px,3vw,32px);line-height:1.2;color:var(--text);flex:1}
-.result-actions{display:flex;gap:8px;flex-wrap:wrap}
-
-.article-body{line-height:1.8;color:var(--text)}
-.article-body h2{font-family:var(--font-display);font-size:22px;margin:28px 0 12px;color:var(--text)}
-.article-body h3{font-size:17px;font-weight:600;margin:20px 0 8px;color:var(--text)}
-.article-body p{margin-bottom:14px;color:#c8c8d0}
-.article-body ul,.article-body ol{padding-left:24px;margin-bottom:14px;color:#c8c8d0}
-.article-body li{margin-bottom:6px}
-.article-body blockquote{border-left:3px solid var(--accent);padding:12px 16px;margin:20px 0;background:var(--surface2);border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-style:italic;color:var(--muted)}
-
-/* BLOCK WITH COPY */
-.block-wrap{position:relative}
-.block-copy{position:absolute;top:8px;right:8px;padding:4px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;font-size:11px;color:var(--muted);cursor:pointer;opacity:0;transition:opacity 0.15s}
-.block-wrap:hover .block-copy{opacity:1}
-.block-copy:hover{color:var(--text)}
-.block-copy.copied{color:var(--success);border-color:var(--success)}
-
-/* SEO BLOCK */
-.seo-block{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-top:24px}
-.seo-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}
-.seo-toggle h3{font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted)}
-.seo-content{margin-top:16px;display:grid;gap:12px}
-.seo-field{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-.seo-field-label{font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.06em}
-.seo-field-value{font-size:13px;color:var(--text);flex:1}
-.seo-keywords{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.seo-kw{background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:20px;font-size:12px;color:var(--accent)}
-
-/* PLATFORM REFORMAT */
-.reformat-bar{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0;padding:16px;background:var(--surface2);border-radius:var(--radius-sm);border:1px solid var(--border)}
-.reformat-label{font-size:12px;color:var(--muted);align-self:center;margin-right:4px}
-
-/* PROMPT PANEL */
-.prompt-panel{margin-top:20px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
-.prompt-toggle{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:12px;color:var(--muted)}
-.prompt-content{padding:0 16px 16px;font-family:monospace;font-size:12px;color:var(--muted);line-height:1.6;white-space:pre-wrap;word-break:break-word}
-
-/* HISTORY */
-.history-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:12px;cursor:pointer;transition:border-color 0.15s}
-.history-item:hover{border-color:var(--muted)}
-.history-item-title{font-family:var(--font-display);font-size:18px;color:var(--text);margin-bottom:6px}
-.history-item-meta{display:flex;gap:12px;font-size:12px;color:var(--muted)}
-.history-empty{text-align:center;padding:60px 0;color:var(--muted)}
-
-/* EXPORT */
-.export-bar{display:flex;gap:8px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
-
-/* VERSION BADGE */
-.version-tag{font-size:11px;background:var(--surface2);border:1px solid var(--border);padding:3px 8px;border-radius:20px;color:var(--muted)}
-
-/* TABS */
-.tabs{display:flex;gap:4px;background:var(--surface2);padding:4px;border-radius:var(--radius-sm);border:1px solid var(--border)}
-.tab{padding:7px 18px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;color:var(--muted);border:none;background:transparent;font-family:var(--font-body);transition:all 0.15s}
-.tab.active{background:var(--surface);color:var(--text);border:1px solid var(--border)}
-
-/* ALERT */
-.alert{padding:14px 18px;border-radius:var(--radius-sm);border-left:3px solid var(--danger);background:rgba(226,75,74,0.08);color:#f09595;font-size:13px;margin-bottom:20px}
-
-/* TAGS */
+.wc-btn.active{border-color:var(--accent);color:var(--accent);background:var(--surface2)}
 .tag-group{display:flex;flex-wrap:wrap;gap:6px}
-.tag{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:var(--font-body);font-size:12px;cursor:pointer;transition:all 0.15s}
+.tag{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:inherit;font-size:12px;cursor:pointer;transition:all 0.15s}
 .tag:hover{border-color:var(--muted);color:var(--text)}
-.tag.active{background:var(--surface2);border-color:var(--accent);color:var(--accent)}
-
-/* DIVIDER */
-.divider{border:none;border-top:1px solid var(--border);margin:24px 0}
+.tag.active{border-color:var(--accent);color:var(--accent);background:var(--surface2)}
+.generate-btn{width:100%;padding:14px;background:var(--accent);color:#0e0e0f;border:none;border-radius:var(--radius-sm);font-family:inherit;font-size:17px;font-weight:700;cursor:pointer;transition:all 0.15s;margin-top:20px}
+.generate-btn:hover{background:var(--accent2)}
+.generate-btn:disabled{opacity:0.4;cursor:not-allowed}
+.loading-overlay{position:fixed;inset:0;background:rgba(14,14,15,0.93);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px}
+.spinner{width:44px;height:44px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-title{font-size:22px;font-weight:700}
+.loading-status{font-size:14px;color:var(--muted)}
+.result-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.result-title{font-size:clamp(20px,3vw,30px);font-weight:700;line-height:1.2;flex:1}
+.result-actions{display:flex;gap:8px;flex-wrap:wrap}
+.reformat-bar{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0;padding:14px;background:var(--surface2);border-radius:var(--radius-sm);border:1px solid var(--border);align-items:center}
+.reformat-label{font-size:12px;color:var(--muted);margin-right:4px}
+.article-body{line-height:1.8}
+.article-body h2{font-size:20px;font-weight:700;margin:24px 0 10px}
+.article-body h3{font-size:16px;font-weight:600;margin:18px 0 8px}
+.article-body p{margin-bottom:12px;color:#c8c8d0}
+.article-body ul,.article-body ol{padding-left:22px;margin-bottom:12px;color:#c8c8d0}
+.article-body li{margin-bottom:5px}
+.article-body blockquote{border-left:3px solid var(--accent);padding:10px 14px;margin:16px 0;background:var(--surface2);border-radius:0 8px 8px 0;font-style:italic;color:var(--muted)}
+.block-wrap{position:relative;padding-right:64px;margin-bottom:12px}
+.block-copy{position:absolute;top:2px;right:0;padding:3px 9px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;font-size:11px;color:var(--muted);cursor:pointer;opacity:0;transition:opacity 0.15s;font-family:inherit}
+.block-wrap:hover .block-copy{opacity:1}
+.export-bar{display:flex;gap:8px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);flex-wrap:wrap}
+.seo-block{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-top:16px}
+.seo-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}
+.seo-toggle-title{font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted)}
+.seo-content{margin-top:14px;display:grid;gap:10px}
+.seo-field{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:11px 13px;display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.seo-field-label{font-size:10px;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.06em}
+.seo-field-value{font-size:13px;color:var(--text);flex:1}
+.seo-keywords{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.seo-kw{background:var(--surface2);border:1px solid var(--border);padding:3px 9px;border-radius:20px;font-size:12px;color:var(--accent)}
+.prompt-panel{margin-top:14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.prompt-toggle{padding:11px 14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:12px;color:var(--muted);font-family:inherit;background:transparent;border:none;width:100%;text-align:left}
+.prompt-content{padding:0 14px 14px;font-family:monospace;font-size:12px;color:var(--muted);line-height:1.6;white-space:pre-wrap;word-break:break-word}
+.template-row{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid var(--border)}
+.template-row:last-child{border-bottom:none}
+.template-name{flex:1;font-size:13px}
+.template-meta{font-size:11px;color:var(--muted)}
+.history-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:10px;cursor:pointer;transition:border-color 0.15s}
+.history-item:hover{border-color:var(--muted)}
+.history-item-title{font-size:17px;font-weight:600;margin-bottom:6px}
+.history-item-meta{display:flex;gap:10px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.history-empty{text-align:center;padding:60px 0;color:var(--muted)}
+.tabs{display:flex;gap:4px;background:var(--surface2);padding:4px;border-radius:var(--radius-sm);border:1px solid var(--border)}
+.tab{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;color:var(--muted);border:1px solid transparent;background:transparent;font-family:inherit;transition:all 0.15s}
+.tab.active{background:var(--surface);color:var(--text);border-color:var(--border)}
+.version-tag{font-size:11px;background:var(--surface2);border:1px solid var(--border);padding:3px 8px;border-radius:20px;color:var(--muted);display:inline-block;margin-right:4px;margin-bottom:4px}
+.divider{border:none;border-top:1px solid var(--border);margin:20px 0}
+.reformatted-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;margin-bottom:16px}
+.reformatted-box pre{white-space:pre-wrap;word-break:break-word;font-family:inherit;font-size:13px;color:#c8c8d0;line-height:1.7}
+.checkbox-row{display:flex;align-items:center;gap:10px;padding-top:8px}
+.checkbox-row input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent);cursor:pointer}
+.checkbox-row label{font-size:13px;color:var(--muted);cursor:pointer}
+.api-input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:9px 13px;font-size:14px;outline:none;font-family:inherit}
+.api-input:focus{border-color:var(--accent)}
+.tpl-input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px 12px;font-size:13px;outline:none;font-family:inherit}
+.tpl-input:focus{border-color:var(--accent)}
+.copied-btn{color:var(--success) !important}
+.accent-tag{color:var(--accent);border-color:var(--accent)}
 </style>
 </head>
 <body>
 
-<div id="root"></div>
+<div id="header-area"></div>
+<div id="loading-area"></div>
+<main id="main-area" style="max-width:860px;margin:0 auto;padding:40px 20px 80px"></main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script>
-const { useState, useEffect, useRef, useCallback } = React;
+var FIRM_CONTEXT = 'You are a professional content writer for Modern Acre Studio PLLC, an architecture and consulting firm based in Richmond, Texas. The firm handles residential and commercial projects in the Houston metro area. Tailor all articles to reflect AEC industry expertise, Houston/Texas market context, and a licensed architect perspective.';
+var TONES = ['Professional','Conversational','Technical','LinkedIn-Optimized'];
+var WORD_COUNTS = [300,600,1200,2000];
+var PROJECT_TAGS = ['Permitting','Custom Home','Commercial','Code Research','Business Dev','General AEC'];
+var PLATFORMS = ['LinkedIn Post','Blog Article','Instagram Caption','Email Newsletter'];
 
-const FIRM_CONTEXT = `You are a professional content writer for Modern Acre Studio PLLC, an architecture and consulting firm based in Richmond, Texas. The firm handles residential and commercial projects in the Houston metro area. Tailor all articles to reflect AEC industry expertise, Houston/Texas market context, and a licensed architect's perspective. The owner is a licensed architect with 10+ years of experience.`;
+function loadLS(key, def) { try { return JSON.parse(localStorage.getItem(key)) || def; } catch(e) { return def; } }
+function saveLS(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch(e) {} }
+function esc(str) { return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-const TONES = ['Professional','Conversational','Technical','LinkedIn-Optimized'];
-const WORD_COUNTS = [300,600,1200,2000];
-const PROJECT_TAGS = ['Permitting','Custom Home','Commercial','Code Research','Business Dev','General AEC'];
-const PLATFORMS = ['LinkedIn Post','Blog Article','Instagram Caption','Email Newsletter'];
-
-const DEFAULT_FORM = {
-  topic:'',
-  audience:'',
-  tone:'Professional',
-  wordCount:600,
-  tags:[],
-  firmVoice:true,
+var state = {
+  view: 'create',
+  apiKey: loadLS('mp_apikey',''),
+  showApiSetup: false,
+  form: { topic:'', audience:'', tone:'Professional', wordCount:600, tags:[], firmVoice:true },
+  isGenerating: false,
+  genStatus: '',
+  article: null,
+  reformatted: null,
+  reformatPlatform: null,
+  isReformatting: false,
+  seoOpen: false,
+  promptOpen: false,
+  templates: loadLS('mp_templates',[]),
+  templateName: '',
+  history: loadLS('mp_history',[]),
+  copiedId: null
 };
 
-// ── GEMINI API ──────────────────────────────────────────────────────────────
-async function callGemini(apiKey, systemPrompt, userPrompt, temperature=0.8) {
-  const body = {
-    contents:[{role:'user',parts:[{text: userPrompt}]}],
-    systemInstruction:{parts:[{text: systemPrompt}]},
-    generationConfig:{temperature, maxOutputTokens:4096}
-  };
-  const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
-    {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}
-  );
-  if(!res.ok){const e=await res.json();throw new Error(e.error?.message||'Gemini error')}
-  const data = await res.json();
-  return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+var articleLines = [];
+
+function setState(updates) {
+  for (var k in updates) state[k] = updates[k];
+  render();
 }
 
-async function generateArticle(apiKey, form) {
-  const toneMap = {
-    'Professional':'formal, authoritative, and polished',
-    'Conversational':'friendly, approachable, and easy to read',
-    'Technical':'detailed, precise, with industry terminology',
-    'LinkedIn-Optimized':'punchy, insight-driven, with a strong hook and short paragraphs optimized for LinkedIn feed'
-  };
-  const system = form.firmVoice ? FIRM_CONTEXT : 'You are a professional content writer.';
-  const prompt = `Write a ${form.wordCount}-word article about: "${form.topic}"
-Tone: ${toneMap[form.tone]}
-Target Audience: ${form.audience || 'general professionals'}
-${form.tags.length ? `Project Tags: ${form.tags.join(', ')}` : ''}
-
-Format the article with:
-- A compelling title (prefix with TITLE:)
-- Clear H2 subheadings
-- Short paragraphs
-- Return plain text with markdown-style headings (## for H2, ### for H3)
-
-After the article, add a separator line "---SEO---" then provide:
-META_TITLE: (max 60 chars)
-META_DESC: (max 155 chars)
-KEYWORDS: keyword1, keyword2, keyword3, keyword4, keyword5
-
-After that add "---PROMPT---" then output the exact prompt you used internally to generate this article.`;
-
-  return await callGemini(apiKey, system, prompt);
+function copyText(text) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).catch(function() { fallbackCopy(text); });
+  } else { fallbackCopy(text); }
+}
+function fallbackCopy(text) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand('copy');
+  document.body.removeChild(ta);
 }
 
-async function reformatArticle(apiKey, articleText, platform) {
-  const instructions = {
-    'LinkedIn Post':'Rewrite as a LinkedIn post: strong hook first line, short punchy paragraphs, 150-300 words, end with a question or CTA, add 5 relevant hashtags at the end.',
-    'Blog Article':'Rewrite as a long-form SEO blog article with intro, body sections with H2 headings, and conclusion. 600-800 words.',
-    'Instagram Caption':'Rewrite as an Instagram caption: engaging first line, 80-150 words, conversational, end with a call to action, add 10 relevant hashtags.',
-    'Email Newsletter':'Rewrite as an email newsletter: subject line first (prefix SUBJECT:), then greeting, body in short paragraphs, clear CTA button text at end.'
-  };
-  const system = FIRM_CONTEXT;
-  const prompt = `${instructions[platform]}\n\nOriginal article:\n${articleText}`;
-  return await callGemini(apiKey, system, prompt, 0.7);
+function showCopied(id) {
+  state.copiedId = id;
+  render();
+  setTimeout(function() { state.copiedId = null; render(); }, 1500);
 }
 
-// ── PARSE ARTICLE RESPONSE ──────────────────────────────────────────────────
-function parseArticleResponse(raw) {
-  const parts = raw.split('---SEO---');
-  const articleRaw = parts[0].trim();
-  const rest = parts[1] || '';
-  const seoParts = rest.split('---PROMPT---');
-  const seoRaw = seoParts[0].trim();
-  const promptRaw = seoParts[1] ? seoParts[1].trim() : '';
+function exportFile(title, content, ext, mime) {
+  var blob = new Blob([content], {type: mime});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = title.replace(/\s+/g,'-').toLowerCase() + '.' + ext;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
 
-  const titleMatch = articleRaw.match(/^TITLE:\s*(.+)/m);
-  const title = titleMatch ? titleMatch[1].trim() : 'Untitled Article';
-  const body = articleRaw.replace(/^TITLE:\s*.+\n?/m,'').trim();
+async function callGemini(system, prompt) {
+  var key = state.apiKey;
+  var res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + key, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      contents: [{role:'user', parts:[{text: prompt}]}],
+      systemInstruction: {parts:[{text: system}]},
+      generationConfig: {temperature: 0.8, maxOutputTokens: 4096}
+    })
+  });
+  if (!res.ok) {
+    var e = await res.json();
+    throw new Error(e.error ? e.error.message : 'Gemini API error');
+  }
+  var data = await res.json();
+  return data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0] ? data.candidates[0].content.parts[0].text : '';
+}
 
-  const metaTitleMatch = seoRaw.match(/META_TITLE:\s*(.+)/);
-  const metaDescMatch = seoRaw.match(/META_DESC:\s*(.+)/);
-  const keywordsMatch = seoRaw.match(/KEYWORDS:\s*(.+)/);
-
+function parseResponse(raw) {
+  var seoParts = raw.split('---SEO---');
+  var articleRaw = seoParts[0].trim();
+  var rest = seoParts[1] || '';
+  var promptParts = rest.split('---PROMPT---');
+  var seoRaw = promptParts[0].trim();
+  var promptRaw = (promptParts[1] || '').trim();
+  var titleMatch = articleRaw.match(/^TITLE:\s*(.+)/m);
+  var title = titleMatch ? titleMatch[1].trim() : 'Untitled';
+  var body = articleRaw.replace(/^TITLE:\s*.+\n?/m,'').trim();
+  var metaTitleMatch = seoRaw.match(/META_TITLE:\s*(.+)/);
+  var metaDescMatch = seoRaw.match(/META_DESC:\s*(.+)/);
+  var kwMatch = seoRaw.match(/KEYWORDS:\s*(.+)/);
   return {
-    title,
-    body,
-    seo:{
+    title: title,
+    body: body,
+    raw: articleRaw,
+    seo: {
       metaTitle: metaTitleMatch ? metaTitleMatch[1].trim() : '',
       metaDesc: metaDescMatch ? metaDescMatch[1].trim() : '',
-      keywords: keywordsMatch ? keywordsMatch[1].split(',').map(k=>k.trim()) : []
+      keywords: kwMatch ? kwMatch[1].split(',').map(function(k){return k.trim();}) : []
     },
-    prompt: promptRaw,
-    raw: articleRaw
+    prompt: promptRaw
   };
 }
 
-// ── RENDER ARTICLE BODY ─────────────────────────────────────────────────────
-function ArticleBody({body, onCopy}) {
-  const lines = body.split('\n');
-  const elements = [];
-  let i = 0;
-  while(i < lines.length) {
-    const line = lines[i];
-    if(line.startsWith('## ')) {
-      elements.push(<h2 key={i}>{line.slice(3)}</h2>);
-    } else if(line.startsWith('### ')) {
-      elements.push(<h3 key={i}>{line.slice(4)}</h3>);
-    } else if(line.startsWith('> ')) {
-      elements.push(<blockquote key={i}>{line.slice(2)}</blockquote>);
-    } else if(line.trim()) {
-      const text = line.trim();
-      elements.push(
-        <div key={i} className="block-wrap" style={{position:'relative'}}>
-          <p>{text}</p>
-          <button className="block-copy" onClick={()=>onCopy(text,i)}>Copy</button>
-        </div>
-      );
-    }
-    i++;
-  }
-  return <div className="article-body">{elements}</div>;
-}
-
-// ── LOCAL STORAGE ───────────────────────────────────────────────────────────
-function loadTemplates() { try{return JSON.parse(localStorage.getItem('bp_templates')||'[]')}catch{return []} }
-function saveTemplates(t) { localStorage.setItem('bp_templates',JSON.stringify(t)) }
-function loadHistory() { try{return JSON.parse(localStorage.getItem('bp_history')||'[]')}catch{return []} }
-function saveHistory(h) { localStorage.setItem('bp_history',JSON.stringify(h)) }
-
-// ── COPY HELPER ─────────────────────────────────────────────────────────────
-function useCopy() {
-  const [copied, setCopied] = useState(null);
-  const copy = useCallback((text, id='main') => {
-    navigator.clipboard.writeText(text).then(()=>{
-      setCopied(id);
-      setTimeout(()=>setCopied(null), 1500);
-    });
-  },[]);
-  return {copy, copied};
-}
-
-// ── EXPORT HELPERS ──────────────────────────────────────────────────────────
-function exportMD(title, body) {
-  const content = `# ${title}\n\n${body}`;
-  const blob = new Blob([content],{type:'text/markdown'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `${title.replace(/\s+/g,'-').toLowerCase()}.md`;
-  a.click();
-}
-
-function exportTXT(title, body) {
-  const content = `${title}\n${'='.repeat(title.length)}\n\n${body}`;
-  const blob = new Blob([content],{type:'text/plain'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `${title.replace(/\s+/g,'-').toLowerCase()}.txt`;
-  a.click();
-}
-
-// ── APP ─────────────────────────────────────────────────────────────────────
-function App() {
-  const [view, setView] = useState('create');
-  const [apiKey, setApiKey] = useState(()=>localStorage.getItem('bp_apikey')||'');
-  const [apiKeyInput, setApiKeyInput] = useState('');
-  const [showApiSetup, setShowApiSetup] = useState(false);
-  const [form, setForm] = useState(DEFAULT_FORM);
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [genStatus, setGenStatus] = useState('');
-  const [article, setArticle] = useState(null);
-  const [reformatted, setReformatted] = useState(null);
-  const [reformatPlatform, setReformatPlatform] = useState(null);
-  const [isReformatting, setIsReformatting] = useState(false);
-  const [seoOpen, setSeoOpen] = useState(false);
-  const [promptOpen, setPromptOpen] = useState(false);
-  const [templates, setTemplates] = useState(loadTemplates);
-  const [templateName, setTemplateName] = useState('');
-  const [history, setHistory] = useState(loadHistory);
-  const {copy, copied} = useCopy();
-
-  const hasApiKey = apiKey.trim().length > 10;
-
-  function saveApiKey() {
-    const k = apiKeyInput.trim();
-    if(k){ localStorage.setItem('bp_apikey',k); setApiKey(k); setShowApiSetup(false); setApiKeyInput(''); }
-  }
-
-  function updateForm(key, val) { setForm(f=>({...f,[key]:val})) }
-
-  function toggleTag(tag) {
-    setForm(f=>({...f, tags: f.tags.includes(tag) ? f.tags.filter(t=>t!==tag) : [...f.tags,tag]}));
-  }
-
-  function saveTemplate() {
-    if(!templateName.trim()) return;
-    const t = {id:Date.now(), name:templateName.trim(), form:{...form}};
-    const updated = [t,...templates];
-    setTemplates(updated); saveTemplates(updated); setTemplateName('');
-  }
-
-  function loadTemplate(t) { setForm({...t.form}) }
-
-  function deleteTemplate(id) {
-    const updated = templates.filter(t=>t.id!==id);
-    setTemplates(updated); saveTemplates(updated);
-  }
-
-  async function handleGenerate() {
-    if(!hasApiKey){ setShowApiSetup(true); return; }
-    if(!form.topic.trim()){ alert('Please enter a topic.'); return; }
-    setIsGenerating(true);
-    setGenStatus('Researching and writing your article...');
-    setArticle(null); setReformatted(null); setReformatPlatform(null);
-    try {
-      setGenStatus('Generating content with Gemini Flash...');
-      const raw = await generateArticle(apiKey, form);
-      setGenStatus('Parsing and formatting...');
-      const parsed = parseArticleResponse(raw);
-      const entry = {
-        id: Date.now(),
-        title: parsed.title,
-        tone: form.tone,
-        tags: form.tags,
-        wordCount: form.wordCount,
-        date: new Date().toLocaleDateString(),
-        article: parsed,
-        form: {...form}
-      };
-      const updatedHistory = [entry,...history].slice(0,50);
-      setHistory(updatedHistory); saveHistory(updatedHistory);
-      setArticle(parsed);
-      setView('create');
-    } catch(e) {
-      alert('Generation failed: ' + e.message);
-    } finally {
-      setIsGenerating(false); setGenStatus('');
+function buildArticleBodyHTML(body) {
+  articleLines = body.split('\n');
+  var html = '';
+  for (var i = 0; i < articleLines.length; i++) {
+    var line = articleLines[i];
+    if (!line.trim()) continue;
+    if (line.indexOf('## ') === 0) {
+      html += '<h2>' + esc(line.slice(3)) + '</h2>';
+    } else if (line.indexOf('### ') === 0) {
+      html += '<h3>' + esc(line.slice(4)) + '</h3>';
+    } else if (line.indexOf('> ') === 0) {
+      html += '<blockquote>' + esc(line.slice(2)) + '</blockquote>';
+    } else {
+      html += '<div class="block-wrap"><p>' + esc(line) + '</p><button class="block-copy" onclick="copyLine(' + i + ')">Copy</button></div>';
     }
   }
-
-  async function handleReformat(platform) {
-    if(!article) return;
-    setIsReformatting(true); setReformatPlatform(platform);
-    try {
-      const result = await reformatArticle(apiKey, article.raw, platform);
-      setReformatted({platform, content:result});
-    } catch(e) {
-      alert('Reformat failed: ' + e.message);
-    } finally { setIsReformatting(false); }
-  }
-
-  function loadHistoryArticle(entry) {
-    setArticle(entry.article);
-    setForm(entry.form||DEFAULT_FORM);
-    setReformatted(null);
-    setView('create');
-  }
-
-  return React.createElement(React.Fragment, null,
-    // HEADER
-    React.createElement('header', null,
-      React.createElement('div', {className:'logo', onClick:()=>{setView('create');setArticle(null)}},
-        React.createElement('span', null, '🥭'),
-        'MangoPress'
-      ),
-      React.createElement('div', {className:'header-actions'},
-        React.createElement('div', {className:'tabs'},
-          React.createElement('button', {className:`tab ${view==='create'?'active':''}`, onClick:()=>setView('create')}, 'Create'),
-          React.createElement('button', {className:`tab ${view==='history'?'active':''}`, onClick:()=>setView('history')}, `History (${history.length})`)
-        ),
-        hasApiKey
-          ? React.createElement('button', {className:'btn btn-sm', onClick:()=>{if(confirm('Remove API key?')){localStorage.removeItem('bp_apikey');setApiKey('');}}}, '🔑 Key saved')
-          : React.createElement('button', {className:'btn btn-primary btn-sm', onClick:()=>setShowApiSetup(true)}, 'Add API Key'),
-        React.createElement('span', {className:'badge'}, 'Gemini Flash')
-      )
-    ),
-
-    // LOADING OVERLAY
-    isGenerating && React.createElement('div', {className:'loading-overlay'},
-      React.createElement('div', {className:'spinner'}),
-      React.createElement('h2', {className:'loading-title'}, 'Writing Article'),
-      React.createElement('p', {className:'loading-status'}, genStatus)
-    ),
-
-    React.createElement('main', null,
-
-      // API KEY SETUP
-      showApiSetup && React.createElement('div', {className:'card', style:{marginBottom:24}},
-        React.createElement('div', {className:'section-label'}, 'Gemini API Key Setup'),
-        React.createElement('p', {style:{fontSize:13,color:'var(--muted)',marginBottom:16}},
-          'Get your free key at ',
-          React.createElement('a', {href:'https://aistudio.google.com/apikey', target:'_blank'}, 'aistudio.google.com/apikey'),
-          '. Free tier = 1,500 requests/day.'
-        ),
-        React.createElement('div', {style:{display:'flex',gap:10}},
-          React.createElement('input', {
-            type:'password', placeholder:'AIza...',
-            value:apiKeyInput, onChange:e=>setApiKeyInput(e.target.value),
-            style:{flex:1,background:'var(--surface2)',border:'1px solid var(--border)',borderRadius:8,color:'var(--text)',padding:'10px 14px',fontSize:14,outline:'none'}
-          }),
-          React.createElement('button', {className:'btn btn-primary', onClick:saveApiKey}, 'Save'),
-          React.createElement('button', {className:'btn', onClick:()=>setShowApiSetup(false)}, 'Cancel')
-        )
-      ),
-
-      // CREATE VIEW
-      view === 'create' && !article && React.createElement(React.Fragment, null,
-        React.createElement('div', {className:'hero'},
-          React.createElement('h1', null, 'Write articles that ', React.createElement('em', null, 'actually'), ' sound like you'),
-          React.createElement('p', null, 'Powered by Gemini Flash. Pre-loaded with Modern Acre Studio context.')
-        ),
-
-        // MAIN FORM
-        React.createElement('div', {className:'card'},
-          React.createElement('div', {className:'section-label'}, 'Article Topic'),
-          React.createElement('div', {className:'field'},
-            React.createElement('label', null, 'What do you want to write about?'),
-            React.createElement('textarea', {
-              placeholder:'e.g. Why Houston homeowners should get a site plan before buying land...',
-              value:form.topic, onChange:e=>updateForm('topic',e.target.value)
-            })
-          ),
-          React.createElement('div', {className:'grid-2'},
-            React.createElement('div', {className:'field'},
-              React.createElement('label', null, 'Target Audience'),
-              React.createElement('input', {
-                type:'text', placeholder:'e.g. homeowners, contractors, developers',
-                value:form.audience, onChange:e=>updateForm('audience',e.target.value)
-              })
-            ),
-            React.createElement('div', {className:'field'},
-              React.createElement('label', null, 'Firm Voice (Modern Acre Studio)'),
-              React.createElement('div', {style:{display:'flex',alignItems:'center',gap:10,paddingTop:8}},
-                React.createElement('input', {
-                  type:'checkbox', id:'firmvoice', checked:form.firmVoice,
-                  onChange:e=>updateForm('firmVoice',e.target.checked),
-                  style:{width:16,height:16,accentColor:'var(--accent)'}
-                }),
-                React.createElement('label', {htmlFor:'firmvoice',style:{fontSize:13,color:'var(--muted)',cursor:'pointer'}}, 'Inject firm context into every prompt')
-              )
-            )
-          ),
-
-          React.createElement('hr', {className:'divider'}),
-          React.createElement('div', {className:'section-label'}, 'Tone & Format'),
-          React.createElement('div', {className:'field'},
-            React.createElement('label', null, 'Tone / Voice'),
-            React.createElement('div', {className:'pill-group'},
-              TONES.map(t=>React.createElement('button', {
-                key:t, className:`pill ${form.tone===t?'active':''}`,
-                onClick:()=>updateForm('tone',t)
-              }, t))
-            )
-          ),
-          React.createElement('div', {className:'field'},
-            React.createElement('label', null, 'Word Count'),
-            React.createElement('div', {className:'wc-group'},
-              WORD_COUNTS.map(w=>React.createElement('button', {
-                key:w, className:`wc-btn ${form.wordCount===w?'active':''}`,
-                onClick:()=>updateForm('wordCount',w)
-              }, `${w} words`))
-            )
-          ),
-          React.createElement('div', {className:'field'},
-            React.createElement('label', null, 'Project Tags (optional)'),
-            React.createElement('div', {className:'tag-group'},
-              PROJECT_TAGS.map(tag=>React.createElement('button', {
-                key:tag, className:`tag ${form.tags.includes(tag)?'active':''}`,
-                onClick:()=>toggleTag(tag)
-              }, tag))
-            )
-          ),
-
-          React.createElement('div', {className:'generate-wrap'},
-            React.createElement('button', {
-              className:'generate-btn', onClick:handleGenerate,
-              disabled:isGenerating||!form.topic.trim()
-            }, '🥭 Generate Article')
-          )
-        ),
-
-        // TEMPLATES
-        React.createElement('div', {className:'card', style:{marginTop:16}},
-          React.createElement('div', {className:'section-label'}, 'Saved Templates'),
-          templates.length === 0
-            ? React.createElement('p', {style:{fontSize:13,color:'var(--muted)',marginBottom:16}}, 'No templates saved yet. Fill out the form above and save it as a template.')
-            : templates.map(t=>React.createElement('div', {key:t.id, className:'template-row'},
-                React.createElement('span', {className:'template-name'}, t.name),
-                React.createElement('span', {className:'template-meta'}, `${t.form.tone} · ${t.form.wordCount}w`),
-                React.createElement('button', {className:'btn btn-sm', onClick:()=>loadTemplate(t)}, 'Load'),
-                React.createElement('button', {className:'btn btn-sm', style:{color:'var(--danger)',borderColor:'transparent'}, onClick:()=>deleteTemplate(t.id)}, '✕')
-              )),
-          React.createElement('div', {style:{display:'flex',gap:10,marginTop:16}},
-            React.createElement('input', {
-              type:'text', placeholder:'Template name...',
-              value:templateName, onChange:e=>setTemplateName(e.target.value),
-              style:{flex:1,background:'var(--surface2)',border:'1px solid var(--border)',borderRadius:8,color:'var(--text)',padding:'8px 12px',fontSize:13,outline:'none'}
-            }),
-            React.createElement('button', {className:'btn btn-primary btn-sm', onClick:saveTemplate}, 'Save Template')
-          )
-        )
-      ),
-
-      // ARTICLE RESULT
-      view === 'create' && article && React.createElement(React.Fragment, null,
-        React.createElement('div', {className:'result-header'},
-          React.createElement('div', null,
-            React.createElement('div', {style:{display:'flex',alignItems:'center',gap:10,marginBottom:8}},
-              React.createElement('span', {className:'version-tag'}, form.tone),
-              React.createElement('span', {className:'version-tag'}, `${form.wordCount}w`),
-              ...form.tags.map(tag=>React.createElement('span', {key:tag, className:'version-tag', style:{color:'var(--accent)',borderColor:'var(--accent)'}}, tag))
-            ),
-            React.createElement('h1', {className:'result-title'}, article.title)
-          ),
-          React.createElement('div', {className:'result-actions'},
-            React.createElement('button', {
-              className:'btn',
-              onClick:()=>copy(article.raw,'full'),
-              style:copied==='full'?{color:'var(--success)',borderColor:'var(--success)'}:{}
-            }, copied==='full'?'Copied!':'Copy All'),
-            React.createElement('button', {className:'btn btn-primary', onClick:()=>{setArticle(null);setReformatted(null)}}, '+ New Article')
-          )
-        ),
-
-        // REFORMAT BAR
-        React.createElement('div', {className:'reformat-bar'},
-          React.createElement('span', {className:'reformat-label'}, 'Reformat for:'),
-          PLATFORMS.map(p=>React.createElement('button', {
-            key:p, className:`btn btn-sm ${reformatPlatform===p?'btn-primary':''}`,
-            onClick:()=>handleReformat(p), disabled:isReformatting
-          }, isReformatting&&reformatPlatform===p?'Reformatting...':p))
-        ),
-
-        // REFORMATTED CONTENT
-        reformatted && React.createElement('div', {className:'card', style:{marginBottom:20}},
-          React.createElement('div', {style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:16}},
-            React.createElement('div', {className:'section-label'}, `Reformatted: ${reformatted.platform}`),
-            React.createElement('div', {style:{display:'flex',gap:8}},
-              React.createElement('button', {
-                className:'btn btn-sm',
-                onClick:()=>copy(reformatted.content,'reformat'),
-                style:copied==='reformat'?{color:'var(--success)'}:{}
-              }, copied==='reformat'?'Copied!':'Copy'),
-              React.createElement('button', {className:'btn btn-sm', onClick:()=>setReformatted(null)}, '✕')
-            )
-          ),
-          React.createElement('div', {style:{fontSize:14,lineHeight:1.7,color:'#c8c8d0',whiteSpace:'pre-wrap'}}, reformatted.content)
-        ),
-
-        // ARTICLE BODY
-        React.createElement('div', {className:'card'},
-          React.createElement(ArticleBody, {
-            body:article.body,
-            onCopy:(text,id)=>copy(text,`block-${id}`)
-          }),
-          React.createElement('div', {className:'export-bar'},
-            React.createElement('button', {className:'btn btn-sm', onClick:()=>exportMD(article.title,article.body)}, '↓ Download .md'),
-            React.createElement('button', {className:'btn btn-sm', onClick:()=>exportTXT(article.title,article.body)}, '↓ Download .txt'),
-            React.createElement('button', {
-              className:'btn btn-sm',
-              onClick:()=>copy(`${article.title}\n\n${article.body}`,'full2'),
-              style:copied==='full2'?{color:'var(--success)'}:{}
-            }, copied==='full2'?'Copied!':'Copy Article')
-          )
-        ),
-
-        // SEO BLOCK
-        article.seo && (article.seo.metaTitle||article.seo.keywords.length>0) && React.createElement('div', {className:'seo-block'},
-          React.createElement('div', {className:'seo-toggle', onClick:()=>setSeoOpen(o=>!o)},
-            React.createElement('h3', null, '⟨/⟩ SEO Metadata'),
-            React.createElement('span', {style:{fontSize:12,color:'var(--muted)'}}, seoOpen?'Hide ▲':'Show ▼')
-          ),
-          seoOpen && React.createElement('div', {className:'seo-content'},
-            React.createElement('div', {className:'seo-field'},
-              React.createElement('div', {style:{flex:1}},
-                React.createElement('div', {className:'seo-field-label'}, 'Meta Title'),
-                React.createElement('div', {className:'seo-field-value'}, article.seo.metaTitle)
-              ),
-              React.createElement('button', {className:'btn btn-sm', onClick:()=>copy(article.seo.metaTitle,'seo-title'), style:copied==='seo-title'?{color:'var(--success)'}:{}}, copied==='seo-title'?'✓':'Copy')
-            ),
-            React.createElement('div', {className:'seo-field'},
-              React.createElement('div', {style:{flex:1}},
-                React.createElement('div', {className:'seo-field-label'}, 'Meta Description'),
-                React.createElement('div', {className:'seo-field-value'}, article.seo.metaDesc)
-              ),
-              React.createElement('button', {className:'btn btn-sm', onClick:()=>copy(article.seo.metaDesc,'seo-desc'), style:copied==='seo-desc'?{color:'var(--success)'}:{}}, copied==='seo-desc'?'✓':'Copy')
-            ),
-            React.createElement('div', {className:'seo-field'},
-              React.createElement('div', {style:{flex:1}},
-                React.createElement('div', {className:'seo-field-label'}, 'Focus Keywords'),
-                React.createElement('div', {className:'seo-keywords'},
-                  article.seo.keywords.map((k,i)=>React.createElement('span', {key:i, className:'seo-kw'}, k))
-                )
-              ),
-              React.createElement('button', {className:'btn btn-sm', onClick:()=>copy(article.seo.keywords.join(', '),'seo-kw'), style:copied==='seo-kw'?{color:'var(--success)'}:{}}, copied==='seo-kw'?'✓':'Copy')
-            )
-          )
-        ),
-
-        // PROMPT PANEL
-        article.prompt && React.createElement('div', {className:'prompt-panel'},
-          React.createElement('div', {className:'prompt-toggle', onClick:()=>setPromptOpen(o=>!o)},
-            React.createElement('span', null, '🔍 View prompt sent to Gemini'),
-            React.createElement('span', null, promptOpen?'▲':'▼')
-          ),
-          promptOpen && React.createElement('div', {className:'prompt-content'}, article.prompt)
-        )
-      ),
-
-      // HISTORY VIEW
-      view === 'history' && React.createElement(React.Fragment, null,
-        React.createElement('div', {style:{marginBottom:24}},
-          React.createElement('h2', {style:{fontFamily:'var(--font-display)',fontSize:28,marginBottom:4}}, 'Article History'),
-          React.createElement('p', {style:{fontSize:13,color:'var(--muted)'}}, `${history.length} articles saved locally`)
-        ),
-        history.length === 0
-          ? React.createElement('div', {className:'history-empty'},
-              React.createElement('p', {style:{fontSize:18,marginBottom:8}}, '🥭'),
-              React.createElement('p', null, 'No articles generated yet.'),
-              React.createElement('button', {className:'btn btn-primary', style:{marginTop:16}, onClick:()=>setView('create')}, 'Create First Article')
-            )
-          : history.map(entry=>React.createElement('div', {key:entry.id, className:'history-item', onClick:()=>loadHistoryArticle(entry)},
-              React.createElement('div', {className:'history-item-title'}, entry.title),
-              React.createElement('div', {className:'history-item-meta'},
-                React.createElement('span', null, entry.date),
-                React.createElement('span', null, entry.tone),
-                React.createElement('span', null, `${entry.wordCount}w`),
-                ...( (entry.tags||[]).map(tag=>React.createElement('span', {key:tag, style:{color:'var(--accent)'}}, tag)) )
-              )
-            ))
-      )
-    )
-  );
+  return html;
 }
 
-ReactDOM.render(React.createElement(App), document.getElementById('root'));
+window.copyLine = function(i) {
+  if (articleLines[i]) {
+    copyText(articleLines[i]);
+    showCopied('line_' + i);
+  }
+};
+
+window.doGenerate = async function() {
+  if (!state.apiKey) { setState({showApiSetup:true}); return; }
+  if (!state.form.topic.trim()) { alert('Please enter a topic.'); return; }
+  setState({isGenerating:true, genStatus:'Writing your article with Gemini Flash...', article:null, reformatted:null, reformatPlatform:null});
+  try {
+    var f = state.form;
+    var toneMap = {
+      'Professional': 'formal, authoritative, and polished',
+      'Conversational': 'friendly, approachable, and easy to read',
+      'Technical': 'detailed and precise with industry terminology',
+      'LinkedIn-Optimized': 'punchy with a strong hook and short paragraphs optimized for LinkedIn'
+    };
+    var system = f.firmVoice ? FIRM_CONTEXT : 'You are a professional content writer.';
+    var tagLine = f.tags.length ? 'Project Tags: ' + f.tags.join(', ') : '';
+    var prompt = 'Write a ' + f.wordCount + '-word article about: "' + f.topic + '"\n'
+      + 'Tone: ' + (toneMap[f.tone] || 'professional') + '\n'
+      + 'Target Audience: ' + (f.audience || 'general professionals') + '\n'
+      + tagLine + '\n\n'
+      + 'Format:\n'
+      + '- First line must be: TITLE: [your title here]\n'
+      + '- Use ## for H2 subheadings\n'
+      + '- Use ### for H3 subheadings\n'
+      + '- Short paragraphs\n\n'
+      + 'After the full article body, add this exact line: ---SEO---\n'
+      + 'Then write:\n'
+      + 'META_TITLE: (max 60 chars)\n'
+      + 'META_DESC: (max 155 chars)\n'
+      + 'KEYWORDS: keyword1, keyword2, keyword3, keyword4, keyword5\n\n'
+      + 'Then add this exact line: ---PROMPT---\n'
+      + 'Then write a short note on how you approached writing this article.';
+
+    var raw = await callGemini(system, prompt);
+    var parsed = parseResponse(raw);
+    var entry = {
+      id: Date.now(),
+      title: parsed.title,
+      tone: f.tone,
+      tags: f.tags.slice(),
+      wordCount: f.wordCount,
+      date: new Date().toLocaleDateString(),
+      article: parsed,
+      form: JSON.parse(JSON.stringify(f))
+    };
+    var updatedHistory = [entry].concat(state.history).slice(0,50);
+    saveLS('mp_history', updatedHistory);
+    setState({isGenerating:false, genStatus:'', article:parsed, history:updatedHistory});
+  } catch(err) {
+    setState({isGenerating:false, genStatus:''});
+    alert('Error: ' + err.message);
+  }
+};
+
+window.doReformat = async function(platform) {
+  if (!state.article) return;
+  setState({isReformatting:true, reformatPlatform:platform});
+  try {
+    var instructions = {
+      'LinkedIn Post': 'Rewrite as a LinkedIn post: strong hook first line, short punchy paragraphs, 150-300 words, end with a question or CTA, add 5 relevant hashtags.',
+      'Blog Article': 'Rewrite as a long-form SEO blog article with intro, H2 body sections, and conclusion. 600-800 words.',
+      'Instagram Caption': 'Rewrite as an Instagram caption: engaging first line, 80-150 words, conversational, end with CTA, add 10 hashtags.',
+      'Email Newsletter': 'Rewrite as an email newsletter. First line must be: SUBJECT: [subject line]. Then greeting, body paragraphs, clear CTA.'
+    };
+    var result = await callGemini(FIRM_CONTEXT, (instructions[platform] || '') + '\n\nOriginal article:\n' + state.article.raw);
+    setState({isReformatting:false, reformatted:{platform:platform, content:result}});
+  } catch(err) {
+    setState({isReformatting:false});
+    alert('Reformat error: ' + err.message);
+  }
+};
+
+window.saveApiKey = function() {
+  var input = document.getElementById('apiKeyInput');
+  var k = input ? input.value.trim() : '';
+  if (k) {
+    saveLS('mp_apikey', k);
+    setState({apiKey:k, showApiSetup:false});
+  }
+};
+
+window.toggleTag = function(tag) {
+  var tags = state.form.tags;
+  var idx = tags.indexOf(tag);
+  if (idx >= 0) tags.splice(idx,1); else tags.push(tag);
+  render();
+};
+
+window.setTone = function(tone) { state.form.tone = tone; render(); };
+window.setWC = function(wc) { state.form.wordCount = wc; render(); };
+window.toggleFirmVoice = function() { state.form.firmVoice = !state.form.firmVoice; render(); };
+window.toggleSEO = function() { state.seoOpen = !state.seoOpen; render(); };
+window.togglePrompt = function() { state.promptOpen = !state.promptOpen; render(); };
+
+window.saveTemplate = function() {
+  var input = document.getElementById('tplNameInput');
+  var name = input ? input.value.trim() : '';
+  if (!name) return;
+  var t = {id:Date.now(), name:name, form:JSON.parse(JSON.stringify(state.form))};
+  var updated = [t].concat(state.templates);
+  saveLS('mp_templates', updated);
+  setState({templates:updated, templateName:''});
+};
+
+window.loadTemplate = function(id) {
+  for (var i=0; i < state.templates.length; i++) {
+    if (state.templates[i].id === id) {
+      state.form = JSON.parse(JSON.stringify(state.templates[i].form));
+      render();
+      return;
+    }
+  }
+};
+
+window.deleteTemplate = function(id) {
+  var updated = state.templates.filter(function(t){return t.id!==id;});
+  saveLS('mp_templates', updated);
+  setState({templates:updated});
+};
+
+window.loadHistoryArticle = function(id) {
+  for (var i=0; i < state.history.length; i++) {
+    if (state.history[i].id === id) {
+      var entry = state.history[i];
+      setState({article:entry.article, form:entry.form || state.form, view:'create', reformatted:null, reformatPlatform:null});
+      return;
+    }
+  }
+};
+
+window.doCopyText = function(id, text) {
+  copyText(text);
+  showCopied(id);
+};
+
+window.doExportMD = function() {
+  if (state.article) exportFile(state.article.title, '# ' + state.article.title + '\n\n' + state.article.body, 'md', 'text/markdown');
+};
+window.doExportTXT = function() {
+  if (state.article) exportFile(state.article.title, state.article.title + '\n\n' + state.article.body, 'txt', 'text/plain');
+};
+
+window.setView = function(v) { setState({view:v}); };
+window.newArticle = function() { setState({article:null, reformatted:null, reformatPlatform:null}); };
+window.clearReformat = function() { setState({reformatted:null, reformatPlatform:null}); };
+window.showApiSetup = function() { setState({showApiSetup:true}); };
+window.hideApiSetup = function() { setState({showApiSetup:false}); };
+window.removeApiKey = function() {
+  if (confirm('Remove saved API key?')) {
+    localStorage.removeItem('mp_apikey');
+    setState({apiKey:''});
+  }
+};
+
+function render() {
+  var s = state;
+
+  // HEADER
+  var headerHTML = '<header>';
+  headerHTML += '<div class="logo" onclick="newArticle();setView(\'create\')">&#129387; Claude-MangoPress</div>';
+  headerHTML += '<div class="header-actions">';
+  headerHTML += '<div class="tabs">';
+  headerHTML += '<button class="tab' + (s.view==='create'?' active':'') + '" onclick="setView(\'create\')">Create</button>';
+  headerHTML += '<button class="tab' + (s.view==='history'?' active':'') + '" onclick="setView(\'history\')">History (' + s.history.length + ')</button>';
+  headerHTML += '</div>';
+  if (s.apiKey) {
+    headerHTML += '<button class="btn btn-sm" onclick="removeApiKey()">&#128273; Key saved</button>';
+  } else {
+    headerHTML += '<button class="btn btn-primary btn-sm" onclick="showApiSetup()">Add API Key</button>';
+  }
+  headerHTML += '<span class="badge">Gemini Flash</span>';
+  headerHTML += '</div></header>';
+  document.getElementById('header-area').innerHTML = headerHTML;
+
+  // LOADING
+  var loadingHTML = '';
+  if (s.isGenerating) {
+    loadingHTML = '<div class="loading-overlay">';
+    loadingHTML += '<div class="spinner"></div>';
+    loadingHTML += '<div class="loading-title">Writing Article...</div>';
+    loadingHTML += '<div class="loading-status">' + esc(s.genStatus) + '</div>';
+    loadingHTML += '</div>';
+  }
+  document.getElementById('loading-area').innerHTML = loadingHTML;
+
+  // MAIN
+  var html = '';
+
+  // API SETUP
+  if (s.showApiSetup) {
+    html += '<div class="card" style="margin-bottom:20px">';
+    html += '<div class="section-label">Gemini API Key</div>';
+    html += '<p style="font-size:13px;color:var(--muted);margin-bottom:14px">Get your free key at <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a> — 1,500 free requests/day.</p>';
+    html += '<div style="display:flex;gap:10px">';
+    html += '<input class="api-input" type="password" id="apiKeyInput" placeholder="AIza..."/>';
+    html += '<button class="btn btn-primary" onclick="saveApiKey()">Save</button>';
+    html += '<button class="btn" onclick="hideApiSetup()">Cancel</button>';
+    html += '</div></div>';
+  }
+
+  // CREATE VIEW — FORM
+  if (s.view === 'create' && !s.article) {
+    html += '<div class="hero">';
+    html += '<h1>Write articles that <span class="hero-accent">actually</span> sound like you</h1>';
+    html += '<p>Powered by Gemini Flash &middot; Pre-loaded with Modern Acre Studio context</p>';
+    html += '</div>';
+
+    html += '<div class="card">';
+    html += '<div class="section-label">Article Details</div>';
+    html += '<div class="field"><label>Topic *</label>';
+    html += '<textarea placeholder="e.g. Why Houston homeowners should get a site plan before buying land..." oninput="state.form.topic=this.value">' + esc(s.form.topic) + '</textarea></div>';
+
+    html += '<div class="grid-2">';
+    html += '<div class="field"><label>Target Audience</label>';
+    html += '<input type="text" placeholder="e.g. homeowners, contractors, developers" value="' + esc(s.form.audience) + '" oninput="state.form.audience=this.value"/></div>';
+    html += '<div class="field"><label>Firm Voice</label>';
+    html += '<div class="checkbox-row">';
+    html += '<input type="checkbox" id="firmVoice" ' + (s.form.firmVoice ? 'checked' : '') + ' onchange="toggleFirmVoice()"/>';
+    html += '<label for="firmVoice">Inject Modern Acre Studio context</label>';
+    html += '</div></div>';
+    html += '</div>';
+
+    html += '<hr class="divider"/>';
+    html += '<div class="section-label">Tone &amp; Format</div>';
+    html += '<div class="field"><label>Tone</label><div class="pill-group">';
+    for (var ti=0; ti < TONES.length; ti++) {
+      var t = TONES[ti];
+      html += '<button class="pill' + (s.form.tone===t?' active':'') + '" onclick="setTone(\'' + t + '\')">' + t + '</button>';
+    }
+    html += '</div></div>';
+
+    html += '<div class="field"><label>Word Count</label><div class="wc-group">';
+    for (var wi=0; wi < WORD_COUNTS.length; wi++) {
+      var w = WORD_COUNTS[wi];
+      html += '<button class="wc-btn' + (s.form.wordCount===w?' active':'') + '" onclick="setWC(' + w + ')">' + w + ' words</button>';
+    }
+    html += '</div></div>';
+
+    html += '<div class="field"><label>Project Tags</label><div class="tag-group">';
+    for (var gi=0; gi < PROJECT_TAGS.length; gi++) {
+      var tag = PROJECT_TAGS[gi];
+      var isActive = s.form.tags.indexOf(tag) >= 0;
+      html += '<button class="tag' + (isActive?' active':'') + '" onclick="toggleTag(\'' + tag + '\')">' + tag + '</button>';
+    }
+    html += '</div></div>';
+
+    var genDisabled = s.isGenerating || !s.form.topic.trim();
+    html += '<button class="generate-btn" onclick="doGenerate()" ' + (genDisabled?'disabled':'') + '>&#129387; Generate Article</button>';
+    html += '</div>';
+
+    // TEMPLATES
+    html += '<div class="card">';
+    html += '<div class="section-label">Saved Templates</div>';
+    if (s.templates.length === 0) {
+      html += '<p style="font-size:13px;color:var(--muted);margin-bottom:14px">No templates yet. Fill out the form above and save it.</p>';
+    } else {
+      for (var tpi=0; tpi < s.templates.length; tpi++) {
+        var tpl = s.templates[tpi];
+        html += '<div class="template-row">';
+        html += '<span class="template-name">' + esc(tpl.name) + '</span>';
+        html += '<span class="template-meta">' + esc(tpl.form.tone) + ' &middot; ' + tpl.form.wordCount + 'w</span>';
+        html += '<button class="btn btn-sm" onclick="loadTemplate(' + tpl.id + ')">Load</button>';
+        html += '<button class="btn btn-sm btn-danger" onclick="deleteTemplate(' + tpl.id + ')">&#10005;</button>';
+        html += '</div>';
+      }
+    }
+    html += '<div style="display:flex;gap:10px;margin-top:14px">';
+    html += '<input class="tpl-input" type="text" id="tplNameInput" placeholder="Template name..."/>';
+    html += '<button class="btn btn-primary btn-sm" onclick="saveTemplate()">Save Template</button>';
+    html += '</div>';
+    html += '</div>';
+  }
+
+  // ARTICLE RESULT
+  if (s.view === 'create' && s.article) {
+    var a = s.article;
+    var fullText = a.title + '\n\n' + a.body;
+
+    html += '<div class="result-header">';
+    html += '<div>';
+    html += '<div style="margin-bottom:8px">';
+    html += '<span class="version-tag">' + esc(s.form.tone) + '</span>';
+    html += '<span class="version-tag">' + s.form.wordCount + 'w</span>';
+    for (var rti=0; rti < s.form.tags.length; rti++) {
+      html += '<span class="version-tag accent-tag">' + esc(s.form.tags[rti]) + '</span>';
+    }
+    html += '</div>';
+    html += '<div class="result-title">' + esc(a.title) + '</div>';
+    html += '</div>';
+    html += '<div class="result-actions">';
+    var copyAllId = 'copyall';
+    html += '<button class="btn' + (s.copiedId===copyAllId?' copied-btn':'') + '" onclick="doCopyText(\'' + copyAllId + '\',document.getElementById(\'full-article-text\').value)">' + (s.copiedId===copyAllId?'Copied!':'Copy All') + '</button>';
+    html += '<input type="hidden" id="full-article-text" value="' + esc(fullText) + '"/>';
+    html += '<button class="btn btn-primary" onclick="newArticle()">+ New Article</button>';
+    html += '</div></div>';
+
+    // REFORMAT BAR
+    html += '<div class="reformat-bar">';
+    html += '<span class="reformat-label">Reformat for:</span>';
+    for (var pi=0; pi < PLATFORMS.length; pi++) {
+      var plat = PLATFORMS[pi];
+      var isActive = s.reformatPlatform === plat && !s.isReformatting;
+      html += '<button class="btn btn-sm' + (isActive?' btn-primary':'') + '" onclick="doReformat(\'' + plat + '\')" ' + (s.isReformatting?'disabled':'') + '>';
+      html += (s.isReformatting && s.reformatPlatform===plat) ? 'Working...' : plat;
+      html += '</button>';
+    }
+    html += '</div>';
+
+    // REFORMATTED
+    if (s.reformatted) {
+      html += '<div class="reformatted-box">';
+      html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">';
+      html += '<div class="section-label">' + esc(s.reformatted.platform) + '</div>';
+      html += '<div style="display:flex;gap:8px">';
+      var rfId = 'reformat';
+      html += '<button class="btn btn-sm' + (s.copiedId===rfId?' copied-btn':'') + '" onclick="doCopyText(\'' + rfId + '\',document.getElementById(\'reformat-text\').value)">' + (s.copiedId===rfId?'Copied!':'Copy') + '</button>';
+      html += '<input type="hidden" id="reformat-text" value="' + esc(s.reformatted.content) + '"/>';
+      html += '<button class="btn btn-sm" onclick="clearReformat()">&#10005;</button>';
+      html += '</div></div>';
+      html += '<pre>' + esc(s.reformatted.content) + '</pre>';
+      html += '</div>';
+    }
+
+    // ARTICLE BODY
+    html += '<div class="card">';
+    html += '<div class="article-body">' + buildArticleBodyHTML(a.body) + '</div>';
+    html += '<div class="export-bar">';
+    html += '<button class="btn btn-sm" onclick="doExportMD()">&#8595; .md</button>';
+    html += '<button class="btn btn-sm" onclick="doExportTXT()">&#8595; .txt</button>';
+    var ca2 = 'copyall2';
+    html += '<button class="btn btn-sm' + (s.copiedId===ca2?' copied-btn':'') + '" onclick="doCopyText(\'' + ca2 + '\',document.getElementById(\'full-article-text2\').value)">' + (s.copiedId===ca2?'Copied!':'Copy Article') + '</button>';
+    html += '<input type="hidden" id="full-article-text2" value="' + esc(fullText) + '"/>';
+    html += '</div></div>';
+
+    // SEO
+    if (a.seo && (a.seo.metaTitle || a.seo.keywords.length)) {
+      html += '<div class="seo-block">';
+      html += '<div class="seo-toggle" onclick="toggleSEO()">';
+      html += '<span class="seo-toggle-title">SEO Metadata</span>';
+      html += '<span style="font-size:12px;color:var(--muted)">' + (s.seoOpen?'Hide &#9650;':'Show &#9660;') + '</span>';
+      html += '</div>';
+      if (s.seoOpen) {
+        html += '<div class="seo-content">';
+        var seo1 = 'seo1'; var seo2 = 'seo2'; var seo3 = 'seo3';
+        html += '<div class="seo-field"><div style="flex:1"><div class="seo-field-label">Meta Title</div><div class="seo-field-value">' + esc(a.seo.metaTitle) + '</div></div>';
+        html += '<button class="btn btn-sm' + (s.copiedId===seo1?' copied-btn':'') + '" onclick="doCopyText(\'' + seo1 + '\',document.getElementById(\'seo-t\').value)">' + (s.copiedId===seo1?'&#10003;':'Copy') + '</button>';
+        html += '<input type="hidden" id="seo-t" value="' + esc(a.seo.metaTitle) + '"/></div>';
+        html += '<div class="seo-field"><div style="flex:1"><div class="seo-field-label">Meta Description</div><div class="seo-field-value">' + esc(a.seo.metaDesc) + '</div></div>';
+        html += '<button class="btn btn-sm' + (s.copiedId===seo2?' copied-btn':'') + '" onclick="doCopyText(\'' + seo2 + '\',document.getElementById(\'seo-d\').value)">' + (s.copiedId===seo2?'&#10003;':'Copy') + '</button>';
+        html += '<input type="hidden" id="seo-d" value="' + esc(a.seo.metaDesc) + '"/></div>';
+        html += '<div class="seo-field"><div style="flex:1"><div class="seo-field-label">Keywords</div><div class="seo-keywords">';
+        for (var ki=0; ki < a.seo.keywords.length; ki++) {
+          html += '<span class="seo-kw">' + esc(a.seo.keywords[ki]) + '</span>';
+        }
+        html += '</div></div>';
+        var kwText = a.seo.keywords.join(', ');
+        html += '<button class="btn btn-sm' + (s.copiedId===seo3?' copied-btn':'') + '" onclick="doCopyText(\'' + seo3 + '\',document.getElementById(\'seo-k\').value)">' + (s.copiedId===seo3?'&#10003;':'Copy') + '</button>';
+        html += '<input type="hidden" id="seo-k" value="' + esc(kwText) + '"/></div>';
+        html += '</div>';
+      }
+      html += '</div>';
+    }
+
+    // PROMPT PANEL
+    if (a.prompt) {
+      html += '<div class="prompt-panel">';
+      html += '<button class="prompt-toggle" onclick="togglePrompt()">&#128269; View prompt sent to Gemini ' + (s.promptOpen?'&#9650;':'&#9660;') + '</button>';
+      if (s.promptOpen) {
+        html += '<div class="prompt-content">' + esc(a.prompt) + '</div>';
+      }
+      html += '</div>';
+    }
+  }
+
+  // HISTORY
+  if (s.view === 'history') {
+    html += '<div style="margin-bottom:24px">';
+    html += '<h2 style="font-size:26px;font-weight:700;margin-bottom:4px">Article History</h2>';
+    html += '<p style="font-size:13px;color:var(--muted)">' + s.history.length + ' articles saved locally</p>';
+    html += '</div>';
+    if (s.history.length === 0) {
+      html += '<div class="history-empty">';
+      html += '<p style="font-size:32px;margin-bottom:10px">&#129387;</p>';
+      html += '<p>No articles yet.</p>';
+      html += '<button class="btn btn-primary" style="margin-top:16px" onclick="setView(\'create\')">Create First Article</button>';
+      html += '</div>';
+    } else {
+      for (var hi=0; hi < s.history.length; hi++) {
+        var entry = s.history[hi];
+        html += '<div class="history-item" onclick="loadHistoryArticle(' + entry.id + ')">';
+        html += '<div class="history-item-title">' + esc(entry.title) + '</div>';
+        html += '<div class="history-item-meta">';
+        html += '<span>' + esc(entry.date) + '</span>';
+        html += '<span>' + esc(entry.tone) + '</span>';
+        html += '<span>' + entry.wordCount + 'w</span>';
+        var entryTags = entry.tags || [];
+        for (var eti=0; eti < entryTags.length; eti++) {
+          html += '<span style="color:var(--accent)">' + esc(entryTags[eti]) + '</span>';
+        }
+        html += '</div></div>';
+      }
+    }
+  }
+
+  document.getElementById('main-area').innerHTML = html;
+}
+
+render();
 </script>
 </body>
 </html>
